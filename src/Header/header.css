@@ -1,0 +1,35 @@
+.header {
+  background-color: #512689;
+  padding: 32px 0;
+}
+.header-users {
+  justify-content: end;
+}
+
+.header-user {
+  justify-content: space-between;
+}
+.header-btn {
+  background: none;
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #f8f8f8;
+}
+.header-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.header-title {
+  font-size: 64px;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 16px;
+}
+.header-text {
+  font-size: 20px;
+  line-height: 23px;
+  color: #fff;
+}
