@@ -33,3 +33,14 @@
   line-height: 23px;
   color: #fff;
 }
+@media (max-width: 798px) {
+  .header-title {
+    font-size: 36px;
+  }
+  .header-text {
+    font-size: 16px;
+  }
+  .header-content {
+    margin-bottom: 11px;
+  }
+}

@@ -1,5 +1,11 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
@@ -18,17 +24,35 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <UserProvider>
           <Router>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/users" element={<Users />} />
-              <Route path="/users/:id" element={<User />} />
-            </Routes>
+            <Main />
           </Router>
         </UserProvider>
       </QueryClientProvider>
     </Provider>
+  );
+}
+
+function Main() {
+  const location = useLocation();
+  const token = localStorage.getItem("token");
+
+  return (
+    <>
+      {(location.pathname === "/users" ||
+        location.pathname.startsWith("/users/")) && <Header />}
+      <Routes>
+        <Route path="/" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/users"
+          element={token ? <Users /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/users/:id"
+          element={token ? <User /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </>
   );
 }
 

@@ -22,13 +22,18 @@ a {
 a:hover {
   color: #535bf2;
 }
-
+a,
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
@@ -49,9 +54,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

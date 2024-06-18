@@ -1,4 +1,5 @@
 .card {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,6 +7,13 @@
   padding: 36px 20px 20px 20px;
   border-radius: 10px;
   box-shadow: 0px 1px 3.98px 0px #33333326;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  @media (min-width: 920px) {
+    border: 1px solid #512689;
+  }
 }
 .card-avatar {
   margin-bottom: 16px;

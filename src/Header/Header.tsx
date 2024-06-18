@@ -1,17 +1,37 @@
 import { useUser } from "../UserContext";
 import "./header.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import exit from "../image/exit.png";
+import arrowBack from "../image/arrow-back.png";
+import { useEffect, useState } from "react";
 
 export function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useUser();
-  console.log(user);
   const handleGoBack = () => {
     navigate("/users");
   };
 
   const showBackButton = !location.pathname.startsWith("/users/");
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 798);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 798);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <div className="header">
@@ -23,12 +43,31 @@ export function Header() {
               : "header-content header-user"
           }
         >
-          {!showBackButton && (
-            <button className="header-btn" onClick={handleGoBack}>
-              Назад
+          {!showBackButton &&
+            (isMobile ? (
+              <img
+                className="header-img"
+                src={arrowBack}
+                alt="Назад"
+                onClick={handleGoBack}
+              />
+            ) : (
+              <button className="header-btn" onClick={handleGoBack}>
+                Назад
+              </button>
+            ))}
+          {isMobile ? (
+            <img
+              className="header-img"
+              src={exit}
+              alt="Выход"
+              onClick={handleLogout}
+            />
+          ) : (
+            <button className="header-btn" onClick={() => handleLogout()}>
+              Выйти
             </button>
           )}
-          <button className="header-btn">Выйти</button>
         </div>
       </div>
       <div className="container">

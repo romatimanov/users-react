@@ -66,3 +66,12 @@
   background: none;
   border: none;
 }
+.container-auth {
+  height: 100%;
+}
+@media (max-width: 798px) {
+  .auth {
+    width: 100%;
+    max-width: 500px;
+  }
+}

@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import usersReducer, { loadUsers } from "../UserSlice";
+import usersReducer, { loadUsers } from "../Reducer/UserSlice";
+import favoriteReducer from "../Reducer/FavoriteSlice";
 
 const preloadedState = {};
 
 export const store = configureStore({
   reducer: {
     users: usersReducer,
+    favorites: favoriteReducer,
   },
   preloadedState,
 });

@@ -2,7 +2,19 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
+  margin-bottom: 56px;
 }
 .users-main {
   width: 100%;
+  padding: 50px 0;
+}
+.show-more__button {
+  border: 1px solid #151317;
+  color: #151317;
+  background: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.show-more__text {
+  margin-right: 5px;
 }
