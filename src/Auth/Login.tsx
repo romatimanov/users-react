@@ -32,7 +32,7 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const users = useSelector((state: RootState) => state.users.users);
-  console.log(users);
+
   const onSubmit: SubmitHandler<FormData> = (data) => {
     const { email, password } = data;
     const foundUser = users.find(
